@@ -30,7 +30,7 @@ function Vine({ x, length, bend, phase, spacing }: VineSpec) {
   }).join(" ");
 
   return (
-    <g className="vine-strand">
+    <g className="vine-strand" style={{ transformOrigin: `${nodes[0].x}px 0px`, animationDuration: `${8 + phase * 2}s`, animationDelay: `${-phase * 4}s` }}>
       <path d={stem} />
       {nodes.slice(1).map((node, i) => {
         const side = (i + Math.round(phase)) % 2 ? 1 : -1;
