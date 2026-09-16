@@ -5,6 +5,9 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
 /* Quiet botanical movement; the clipped gutters keep every leaf off the content. */
+.vine-cluster{overflow:visible}
+.vine-flutter{transform-origin:0 0;animation:leaf-flutter 5s ease-in-out infinite alternate}
+@keyframes leaf-flutter{0%,100%{transform:rotate(-3deg)}45%{transform:rotate(5deg)}75%{transform:rotate(1deg)}}
 .vine-strand{animation:vine-sway 10s ease-in-out infinite alternate}
 @keyframes vine-sway{from{transform:rotate(-1.7deg)}to{transform:rotate(1.7deg)}}
 .falling-leaves{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
@@ -18,10 +21,10 @@
 .leaf-lane-right .falling-leaf{animation-delay:-14s;animation-duration:32s}
 .leaf-lane-right .falling-leaf-1{animation-delay:-4s;animation-duration:38s}
 .leaf-lane-right .falling-leaf-2{animation-delay:-25s;animation-duration:43s}
-@keyframes leaf-fall{0%{transform:translate(0,0);opacity:0}10%{opacity:.4}35%{transform:translate(8px,35vh)}65%{transform:translate(-5px,65vh);opacity:.35}90%{opacity:.25}100%{transform:translate(3px,calc(100vh + 55px));opacity:0}}
+@keyframes leaf-fall{0%{transform:translate(0,0);opacity:0}10%{opacity:.4}35%{transform:translate(8px,35svh)}65%{transform:translate(-5px,65svh);opacity:.35}86%{transform:translate(3px,calc(100svh + 15px));opacity:.3}94%{transform:translate(6px,calc(100svh + 15px));opacity:.25}100%{transform:translate(6px,calc(100svh + 15px));opacity:0}}
 @keyframes leaf-turn{from{transform:rotate(-24deg)}to{transform:rotate(36deg)}}
 .motion-toggle{background:transparent;padding:5px 0;border-bottom:1px solid var(--line);font-size:10px;color:var(--muted)}
 .motion-toggle[aria-pressed=true]{border-color:var(--green);color:var(--green)}
-body:has(.motion-toggle[aria-pressed=true]) :is(.vine-strand,.falling-leaf,.falling-leaf svg){animation-play-state:paused}
+body:has(.motion-toggle[aria-pressed=true]) :is(.vine-strand,.vine-flutter,.falling-leaf,.falling-leaf svg){animation-play-state:paused}
 @media(max-width:700px){.leaf-lane{width:17px}.falling-leaf{left:1px;width:11px;animation-duration:36s}.falling-leaf-1,.falling-leaf-2{display:none}.vine-strand{animation-name:vine-sway-mobile}.motion-toggle{font-size:9px;text-align:right}@keyframes vine-sway-mobile{from{transform:rotate(-1deg)}to{transform:rotate(1deg)}}}
 @media(prefers-reduced-motion:reduce){.falling-leaves,.motion-toggle{display:none}.vine-strand{animation:none}}

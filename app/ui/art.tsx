@@ -39,8 +39,10 @@ function Vine({ x, length, bend, phase, spacing }: VineSpec) {
         const drop = (19 + (i % 2) * 5) * size;
         return (
           <g key={i} transform={`translate(${node.x} ${node.y})`}>
+            <g className="vine-flutter" style={{ animationDuration: `${4 + phase + i * .17}s`, animationDelay: `${-i - phase}s` }}>
             <path className="vine-leaf" d={`M0 0 C${side * 16 * size} -9 ${side * 32 * size} 0 ${tip} ${drop} C${side * 9 * size} ${drop + 1} ${side * 2} 10 0 0Z`} />
             <path className="vine-vein" d={`M0 0 Q${side * 12 * size} 4 ${tip} ${drop}`} />
+            </g>
           </g>
         );
       })}
